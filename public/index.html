@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог-система - NoSQL застосунок</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📝 Блог-система</h1>
+            <nav>
+                <a href="#posts">Пости</a>
+                <a href="#analytics">Аналітика</a>
+                <a href="#add-post">Додати пост</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Пошук та фільтри -->
+        <section id="search-section" class="search-section">
+            <div class="search-controls">
+                <div class="search-group">
+                    <input type="text" id="text-search" placeholder="Повнотекстовий пошук...">
+                    <button onclick="performTextSearch()">🔍 Пошук</button>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="tags-search" placeholder="Теги (через кому)...">
+                    <button onclick="performTagSearch()">🏷️ Пошук за тегами</button>
+                </div>
+                <div class="search-group">
+                    <select id="category-filter">
+                        <option value="">Всі категорії</option>
+                    </select>
+                    <select id="sort-by">
+                        <option value="publishedAt">За датою</option>
+                        <option value="views">За переглядами</option>
+                        <option value="rating.likes">За лайками</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Статистика -->
+        <section id="stats-section" class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Топ автори</h3>
+                    <div id="top-authors"></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Популярні категорії</h3>
+                    <div id="popular-categories"></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Статистика коментарів</h3>
+                    <div id="comment-stats"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Список постів -->
+        <section id="posts-section">
+            <h2>Останні пости</h2>
+            <div id="posts-container"></div>
+            <div id="pagination"></div>
+        </section>
+
+        <!-- Форма додавання поста -->
+        <section id="add-post" class="form-section">
+            <h2>Додати новий пост</h2>
+            <form id="add-post-form">
+                <div class="form-group">
+                    <label>Назва:</label>
+                    <input type="text" id="post-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Зміст:</label>
+                    <textarea id="post-content" rows="10" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Категорія:</label>
+                    <select id="post-category" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Теги (через кому):</label>
+                    <input type="text" id="post-tags" placeholder="технології, програмування">
+                </div>
+                <div class="form-group">
+                    <label>Автор (ID):</label>
+                    <select id="post-author"></select>
+                </div>
+                <div class="form-group">
+                    <label>Геолокація (опціонально):</label>
+                    <div class="geo-inputs">
+                        <input type="number" id="post-lng" step="0.0001" placeholder="Довгота">
+                        <input type="number" id="post-lat" step="0.0001" placeholder="Широта">
+                    </div>
+                </div>
+                <button type="submit">Опублікувати</button>
+            </form>
+        </section>
+
+        <!-- Аналітична панель -->
+        <section id="analytics" class="analytics-section">
+            <h2>Аналітична панель</h2>
+            <div id="analytics-content"></div>
+        </section>
+    </main>
+
+    <!-- Модальне вікно для деталей поста -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="post-details"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

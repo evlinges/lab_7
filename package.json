@@ -1,0 +1,25 @@
+{
+  "name": "blog-nosql-system",
+  "version": "1.0.0",
+  "description": "Повний цикл розробки NoSQL застосунку - блог-система",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seedDatabase.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["mongodb", "nosql", "blog", "express"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
+
